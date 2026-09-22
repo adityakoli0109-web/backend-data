@@ -24,7 +24,7 @@ button.addEventListener('click', async () => {
   results.innerHTML = '';
 
   try {
-    const response = await fetch('/api/scan', { method: 'POST', body: form });
+    const response = await fetch("https://pii-detector-backend.onrender.com/api/scan", { method: 'POST', body: form });
     const data = await response.json();
     if (!response.ok) throw new Error(data.detail || data.error || 'Scan failed');
     renderResults(data);
