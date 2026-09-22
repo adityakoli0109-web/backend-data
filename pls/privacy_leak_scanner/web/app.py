@@ -3,6 +3,7 @@ import os
 import uuid
 
 from flask import Flask, jsonify, render_template, request
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
 from scanner.engine import scan_file
@@ -30,7 +31,7 @@ app = Flask(
     template_folder="templates",
     static_folder="static"
 )
-
+CORS(app)
 
 # Maximum upload size: 10 MB
 MAX_FILE_SIZE = 10 * 1024 * 1024
