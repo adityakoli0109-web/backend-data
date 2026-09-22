@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Leak Scanner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">PRIVACY ANALYSIS</p>
+      <h1>Privacy Leak Scanner</h1>
+      <p class="subtitle">Upload an authorized local file. Images are read with OCR, then the existing privacy engine checks for sensitive data.</p>
+    </section>
+
+    <section class="card upload-card">
+      <label class="dropzone" for="fileInput">
+        <span class="upload-icon">↑</span>
+        <strong>Choose a file</strong>
+        <span>PDF, images, CSV, XLSX, DOCX, PPTX, TXT, MD, JSON, XML, HTML and more</span>
+      </label>
+      <input id="fileInput" type="file" accept=".png,.jpg,.jpeg,.bmp,.tif,.tiff,.webp,.pdf,.csv,.xlsx,.xlsm,.docx,.pptx,.txt,.md,.log,.json,.xml,.html,.htm,.yaml,.yml">
+      <div class="actions">
+        <span id="fileName">No file selected</span>
+        <button id="scanButton" type="button">Scan file</button>
+      </div>
+      <p class="note">For images, OCR extracts text first. Only scan files you are authorized to analyze.</p>
+    </section>
+
+    <section id="status" class="status hidden"></section>
+
+    <section id="summary" class="summary hidden">
+      <div class="stat"><span id="total">0</span><small>Findings</small></div>
+      <div class="stat"><span id="accidental">0</span><small>Likely accidental</small></div>
+      <div class="stat"><span id="intended">0</span><small>Intended disclosure</small></div>
+      <div class="stat"><span id="review">0</span><small>Context review</small></div>
+    </section>
+
+    <section id="results" class="results"></section>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
